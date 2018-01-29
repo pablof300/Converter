@@ -1,7 +1,7 @@
 # Converter
 Converts decimal/hexadecimal/octal/binary into each other and displays it graphically
 
-![converter](https://github.com/pablof300/Mancala/blob/master/src/main/resources/screenshot_1.png?raw=true)
+![converter](https://github.com/pablof300/Converter/blob/master/src/main/resources/screenshot.png?raw=true)
 
 ## Downloads
 - builds [jar](https://github.com/pablof300/Converter/blob/master/builds/Binary%20Converter.jar)
