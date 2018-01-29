@@ -15,10 +15,12 @@ public class ConverterMain extends Application {
 	@Override
 	public void start(Stage stage) throws Exception {
 		mainStage = stage;
-		new MenuLoader("convertor").load();
+		new MenuLoader("convertermenu").load();
 		mainStage.setResizable(false);
 		mainStage.show();
 		mainStage.setTitle("Convertor");
+		
+		System.out.println("1011111031".matches("[01]+"));
 	}
 
 	public static Stage getMainStage() {

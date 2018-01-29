@@ -7,13 +7,13 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="400.0" style="-fx-background-color: #eef2f5;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="400.0" style="-fx-background-color: #eef2f5;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="me.pabloestrada.UI.ConverterMenu">
    <children>
       <HBox maxHeight="100.0" maxWidth="400.0" prefHeight="100.0" prefWidth="400.0">
          <children>
             <VBox prefHeight="200.0" prefWidth="100.0">
                <children>
-                  <TextField maxHeight="100.0" minHeight="80.0" prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: transparent; -fx-border-color: transparent; -fx-font-family: Radnika Medium Condensed; -fx-text-fill: #424c58; -fx-font-size: 33;" text="123456789">
+                  <TextField fx:id="input" maxHeight="100.0" minHeight="80.0" prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: transparent; -fx-border-color: transparent; -fx-font-family: Radnika Medium Condensed; -fx-text-fill: #424c58; -fx-font-size: 33;" text="0">
                      <font>
                         <Font size="30.0" />
                      </font>
@@ -30,12 +30,12 @@
                         <Insets top="-30.0" />
                      </VBox.margin>
                   </ImageView>
-                  <Text fill="#424c58" strokeType="OUTSIDE" strokeWidth="0.0" text="Decimal">
+                  <Text fx:id="selectedInput" fill="#424c58" strokeType="OUTSIDE" strokeWidth="0.0" text="Decimal" wrappingWidth="185.7685546875">
                      <font>
                         <Font size="10.0" />
                      </font>
                   </Text>
-                  <Text fill="#424c58" opacity="0.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Warning message">
+                  <Text fx:id="status" fill="#424c58" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="242.0">
                      <font>
                         <Font size="10.0" />
                      </font>
@@ -52,34 +52,40 @@
                <children>
                   <HBox prefHeight="100.0" prefWidth="200.0">
                      <children>
-                        <ImageView fitHeight="50.0" fitWidth="50.0">
+                        <ImageView fx:id="decimal" fitHeight="30.0" fitWidth="50.0" onMouseClicked="#updateType" pickOnBounds="true">
                            <image>
                               <Image url="@decimal.png" />
                            </image>
+                           <HBox.margin>
+                              <Insets left="10.0" top="10.0" />
+                           </HBox.margin>
                         </ImageView>
-                        <ImageView fitHeight="50.0" fitWidth="50.0" opacity="0.5">
+                        <ImageView fx:id="binary" fitHeight="30.0" fitWidth="50.0" onMouseClicked="#updateType" opacity="0.5" pickOnBounds="true">
                            <image>
                               <Image url="@binary.png" />
                            </image>
                            <HBox.margin>
-                              <Insets left="5.0" />
+                              <Insets left="5.0" top="10.0" />
                            </HBox.margin>
                         </ImageView>
                      </children>
                   </HBox>
                   <HBox prefHeight="100.0" prefWidth="200.0">
                      <children>
-                        <ImageView fitHeight="50.0" fitWidth="50.0" opacity="0.5">
+                        <ImageView fx:id="hexadecimal" fitHeight="30.0" fitWidth="50.0" onMouseClicked="#updateType" opacity="0.5" pickOnBounds="true">
                            <image>
                               <Image url="@hexa.png" />
                            </image>
+                           <HBox.margin>
+                              <Insets left="10.0" top="10.0" />
+                           </HBox.margin>
                         </ImageView>
-                        <ImageView fitHeight="50.0" fitWidth="50.0" opacity="0.5">
+                        <ImageView fx:id="octal" fitHeight="30.0" fitWidth="50.0" onMouseClicked="#updateType" opacity="0.5" pickOnBounds="true">
                            <image>
                               <Image url="@octal.png" />
                            </image>
                            <HBox.margin>
-                              <Insets left="5.0" />
+                              <Insets left="5.0" top="10.0" />
                            </HBox.margin>
                         </ImageView>
                      </children>
@@ -98,7 +104,7 @@
                   <Image url="@tab.png" />
                </image>
             </ImageView>
-            <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Decimal">
+            <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Decimal" textAlignment="CENTER" wrappingWidth="275.3056640625">
                <font>
                   <Font size="30.0" />
                </font>
@@ -106,9 +112,9 @@
                   <Insets top="-50.0" />
                </StackPane.margin>
             </Text>
-            <Text fill="#424c58" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
+            <Text fx:id="decimalText" fill="#424c58" strokeType="OUTSIDE" strokeWidth="0.0" text="0" textAlignment="CENTER" wrappingWidth="347.896484375">
                <font>
-                  <Font size="30.0" />
+                  <Font size="20.0" />
                </font>
                <StackPane.margin>
                   <Insets top="50.0" />
@@ -126,7 +132,7 @@
                   <Insets bottom="-10.0" left="-10.0" right="-10.0" />
                </StackPane.margin>
             </ImageView>
-            <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Binary">
+            <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Binary" textAlignment="CENTER" wrappingWidth="288.8720703125">
                <font>
                   <Font size="30.0" />
                </font>
@@ -134,9 +140,9 @@
                   <Insets top="-40.0" />
                </StackPane.margin>
             </Text>
-            <Text fill="#424c58" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
+            <Text fx:id="binaryText" fill="#424c58" strokeType="OUTSIDE" strokeWidth="0.0" text="0" textAlignment="CENTER" wrappingWidth="352.896484375">
                <font>
-                  <Font size="30.0" />
+                  <Font size="20.0" />
                </font>
                <StackPane.margin>
                   <Insets top="60.0" />
@@ -149,35 +155,34 @@
       </StackPane>
       <StackPane prefHeight="150.0" prefWidth="200.0">
          <children>
-            <ImageView fitHeight="110.0" fitWidth="375.0">
-               <image>
-                  <Image url="@tab.png" />
-               </image>
-               <StackPane.margin>
-                  <Insets top="-10.0" />
-               </StackPane.margin>
-            </ImageView>
-            <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Hexadecimal">
-               <font>
-                  <Font size="30.0" />
-               </font>
-               <StackPane.margin>
-                  <Insets top="-60.0" />
-               </StackPane.margin>
-            </Text>
-            <Text fill="#424c58" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
-               <font>
-                  <Font size="30.0" />
-               </font>
-               <StackPane.margin>
-                  <Insets top="40.0" />
-               </StackPane.margin>
-            </Text>
-            <ImageView fitHeight="60.0" fitWidth="60.0">
-               <image>
-                  <Image url="@plus.png" />
-               </image>
-            </ImageView>
+            <StackPane prefHeight="150.0" prefWidth="200.0">
+               <children>
+                  <ImageView fitHeight="110.0" fitWidth="375.0">
+                     <image>
+                        <Image url="@tab.png" />
+                     </image>
+                     <StackPane.margin>
+                        <Insets top="-10.0" />
+                     </StackPane.margin>
+                  </ImageView>
+                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Hexadecimal" textAlignment="CENTER" wrappingWidth="341.669921875">
+                     <font>
+                        <Font size="30.0" />
+                     </font>
+                     <StackPane.margin>
+                        <Insets top="-60.0" />
+                     </StackPane.margin>
+                  </Text>
+                  <Text fx:id="hexadecimalText" fill="#424c58" strokeType="OUTSIDE" strokeWidth="0.0" text="0" textAlignment="CENTER" wrappingWidth="348.896484375">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                     <StackPane.margin>
+                        <Insets top="40.0" />
+                     </StackPane.margin>
+                  </Text>
+               </children>
+            </StackPane>
          </children>
          <VBox.margin>
             <Insets top="-25.0" />
@@ -185,35 +190,34 @@
       </StackPane>
       <StackPane prefHeight="150.0" prefWidth="200.0">
          <children>
-            <ImageView fitHeight="110.0" fitWidth="375.0">
-               <image>
-                  <Image url="@tab.png" />
-               </image>
-               <StackPane.margin>
-                  <Insets top="-10.0" />
-               </StackPane.margin>
-            </ImageView>
-            <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Octal">
-               <font>
-                  <Font size="30.0" />
-               </font>
-               <StackPane.margin>
-                  <Insets top="-60.0" />
-               </StackPane.margin>
-            </Text>
-            <Text fill="#424c58" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
-               <font>
-                  <Font size="30.0" />
-               </font>
-               <StackPane.margin>
-                  <Insets top="40.0" />
-               </StackPane.margin>
-            </Text>
-            <ImageView fitHeight="60.0" fitWidth="60.0">
-               <image>
-                  <Image url="@plus.png" />
-               </image>
-            </ImageView>
+            <StackPane prefHeight="150.0" prefWidth="200.0">
+               <children>
+                  <ImageView fitHeight="110.0" fitWidth="375.0">
+                     <image>
+                        <Image url="@tab.png" />
+                     </image>
+                     <StackPane.margin>
+                        <Insets top="-10.0" />
+                     </StackPane.margin>
+                  </ImageView>
+                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Octal" textAlignment="CENTER" wrappingWidth="347.9267578125">
+                     <font>
+                        <Font size="30.0" />
+                     </font>
+                     <StackPane.margin>
+                        <Insets top="-60.0" />
+                     </StackPane.margin>
+                  </Text>
+                  <Text fx:id="octalText" fill="#424c58" strokeType="OUTSIDE" strokeWidth="0.0" text="0" textAlignment="CENTER" wrappingWidth="350.896484375">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                     <StackPane.margin>
+                        <Insets top="40.0" />
+                     </StackPane.margin>
+                  </Text>
+               </children>
+            </StackPane>
          </children>
          <VBox.margin>
             <Insets top="-35.0" />
