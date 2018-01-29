@@ -18,7 +18,7 @@ public class ConverterMain extends Application {
 		new MenuLoader("convertermenu").load();
 		mainStage.setResizable(false);
 		mainStage.show();
-		mainStage.setTitle("Convertor");
+		mainStage.setTitle("Converter by Pablo");
 		
 		System.out.println("1011111031".matches("[01]+"));
 	}
